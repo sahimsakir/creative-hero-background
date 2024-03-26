@@ -1,29 +1,35 @@
 //step 1: get DOM
-let nextDom = document.getElementById('next');
-let prevDom = document.getElementById('prev');
+let nextDom = document.getElementById("next");
+let prevDom = document.getElementById("prev");
 
-let carouselDom = document.querySelector('.carousel');
-let SliderDom = carouselDom.querySelector('.carousel .list');
-let thumbnailBorderDom = document.querySelector('.carousel .thumbnail');
-let thumbnailItemsDom = thumbnailBorderDom.querySelectorAll('.item');
-
+let carouselDom = document.querySelector(".carousel");
+let SliderDom = carouselDom.querySelector(".carousel .list");
+let thumbnailBorderDom = document.querySelector(".carousel .thumbnail");
+let thumbnailItemsDom = thumbnailBorderDom.querySelectorAll(".item");
 
 thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
 let timeRunning = 1000;
 // let timeAutoNext = 7000;
 
-nextDom.onclick = function(){
-    showSlider('next');    
-}
-
-prevDom.onclick = function(){
-    showSlider('prev');    
-}
+nextDom.onclick = function () {
+  showSlider("next");
+};
+document.addEventListener("keydown", function (event) {
+  if (event.key === "ArrowRight") {
+    showSlider("next");
+  }
+  else if(event.key === "ArrowLeft"){
+    showSlider("prev");
+  }
+});
+prevDom.onclick = function () {
+  showSlider("prev");
+};
 let runTimeOut;
 // let runNextAuto = setTimeout(() => {
 //     next.click();
 // }, timeAutoNext)
-function showSlider(type){
+function showSlider(type) {
   let SliderItemsDom = SliderDom.querySelectorAll(".carousel .list .item");
   let thumbnailItemsDom = document.querySelectorAll(
     ".carousel .thumbnail .item"
